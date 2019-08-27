@@ -1,0 +1,25 @@
+server:
+  port: 9095
+
+spring:
+  application:
+      name: pl-prd
+  datasource:
+    url:  jdbc:mysql://192.168.1.117:3306/sms?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username:  root
+    password:  wanban
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+swagger:
+  show: true
+imgpush:
+  url: http://hc.sncsrv.com/index.php/interface/JPushImg
+
+del:
+  time: 1440
+  url: /Users/YZBbanban/Desktop/test/ssss
+
+
