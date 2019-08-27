@@ -104,14 +104,11 @@
         from
         user
         WHERE 1=1
-        <if test="username != null">
-            and username = #{username},
-        </if>
         <if test="mobile != null">
-            and mobile = #{mobile},
+            and mobile = #{mobile}
         </if>
         <if test="id != null">
-            and id = #{id},
+            and id = #{id}
         </if>
         limit #{pageNo},#{pageSize}
     </select>
@@ -122,10 +119,10 @@
         FROM user
         WHERE 1=1
         <if test="mobile != null">
-            and mobile = #{mobile},
+            and mobile = #{mobile}
         </if>
         <if test="id != null">
-            and id = #{id},
+            and id = #{id}
         </if>
     </select>
 

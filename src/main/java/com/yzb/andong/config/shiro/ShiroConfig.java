@@ -8,6 +8,8 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 import javax.servlet.Filter;
 import java.util.HashMap;
@@ -18,8 +20,10 @@ import java.util.Map;
  *
  * @author wangban
  */
+@Configuration
 public class ShiroConfig {
 
+    @Bean("securityManager")
     public DefaultWebSecurityManager getManager(JwtRealm myRealm) {
         DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
         // 使用自己的realm
@@ -35,6 +39,7 @@ public class ShiroConfig {
         return manager;
     }
 
+    @Bean("shiroFilter")
     public ShiroFilterFactoryBean factory(DefaultWebSecurityManager securityManager) {
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
 
@@ -57,10 +62,6 @@ public class ShiroConfig {
         filterRuleMap.put("/v1/user/info/login", "anon");
         filterRuleMap.put("/v1/user/info/modify", "anon");
         filterRuleMap.put("/v1/manage/sysUser/login", "anon");
-        //swagger过滤不通过filter
-        filterRuleMap.put("/v2/api-docs", "anon");
-        filterRuleMap.put("/swagger*/**", "anon");
-        filterRuleMap.put("/webjars*/**", "anon");
         factoryBean.setFilterChainDefinitionMap(filterRuleMap);
         return factoryBean;
     }
@@ -69,6 +70,7 @@ public class ShiroConfig {
      * 下面的代码是添加注解支持
      */
     @Bean
+    @DependsOn("lifecycleBeanPostProcessor")
     public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
         DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
         // 强制使用cglib，防止重复代理和可能引起代理出错的问题
