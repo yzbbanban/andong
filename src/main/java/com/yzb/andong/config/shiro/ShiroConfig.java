@@ -57,6 +57,8 @@ public class ShiroConfig {
         filterRuleMap.put("/401", "anon");
         //登陆注册发短信不走filter
         filterRuleMap.put("/v1/manage/sms/**", "anon");
+        filterRuleMap.put("/v2/api-docs", "anon");
+        filterRuleMap.put("/swagger*/**", "anon");
         filterRuleMap.put("/v1/app/sms/**", "anon");
         filterRuleMap.put("/v1/user/info/register", "anon");
         filterRuleMap.put("/v1/user/info/login", "anon");
