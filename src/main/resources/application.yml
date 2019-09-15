@@ -5,9 +5,9 @@ spring:
   application:
       name: andong
   datasource:
-    url:  jdbc:mysql://192.168.1.117:3306/sms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&useUnicode=true&serverTimezone=UTC
+    url:  jdbc:mysql://127.0.0.1:3306/sms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&useUnicode=true&serverTimezone=UTC
     username:  root
-    password:  wanban
+    password:  yangyang520
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis:
   mapper-locations: classpath:mapper/*.xml
