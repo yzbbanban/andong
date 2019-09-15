@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yzb.andong.dao.GroupUrlDao">
+
+    <sql id="baseUrl">
+	  id,sysUserId,`group`,staffUrl,customUrl,xid,remark,createTime,updateTime
+    </sql>
+
+    <!--获取 url 信息-->
+    <select id="getBaseUrl" resultType="com.yzb.andong.domain.orm.GroupUrl">
+        SELECT
+        <include refid="baseUrl"></include>
+        FROM group_url
+        WHERE sysUserId=#{sysUserId}
+    </select>
+
+</mapper>

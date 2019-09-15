@@ -59,11 +59,13 @@ public class ShiroConfig {
         filterRuleMap.put("/v1/manage/sms/**", "anon");
         filterRuleMap.put("/v2/api-docs", "anon");
         filterRuleMap.put("/swagger*/**", "anon");
+        filterRuleMap.put("/swagger-ui.html", "anon");
         filterRuleMap.put("/v1/app/sms/**", "anon");
         filterRuleMap.put("/v1/user/info/register", "anon");
         filterRuleMap.put("/v1/user/info/login", "anon");
         filterRuleMap.put("/v1/user/info/modify", "anon");
         filterRuleMap.put("/v1/manage/sysUser/login", "anon");
+        filterRuleMap.put("/public/api/index/**", "anon");
         factoryBean.setFilterChainDefinitionMap(filterRuleMap);
         return factoryBean;
     }
