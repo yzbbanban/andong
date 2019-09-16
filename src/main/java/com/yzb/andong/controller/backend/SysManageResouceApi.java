@@ -39,6 +39,7 @@ public class SysManageResouceApi extends BaseApi {
 
     @ApiOperation(value = "王斑：添加父节点系统管理资源", notes = "添加父节点信息")
     @RequestMapping(value = "/addParent", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson addSySManageParentResource(SysManageResourceAddParentDTO addParentDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -75,6 +76,7 @@ public class SysManageResouceApi extends BaseApi {
 
     @ApiOperation(value = "王斑：添加子节点系统管理资源", notes = "添加子节点信息")
     @RequestMapping(value = "/addChildren", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson addSySManageChildrenResource(SysManageResourceAddChildrenDTO resourceAddChildrenDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -110,6 +112,7 @@ public class SysManageResouceApi extends BaseApi {
 
     @ApiOperation(value = "王斑：更新节点信息", notes = "更新节点信息")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson updateSysManageRes(SysManageResourceUpdateDTO resourceUpdateDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -140,6 +143,7 @@ public class SysManageResouceApi extends BaseApi {
 
     @ApiOperation(value = "王斑：删除节点信息", notes = "删除结果")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson deleteSysManageRes(Integer id) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -170,6 +174,7 @@ public class SysManageResouceApi extends BaseApi {
 
     @ApiOperation(value = "王斑：更新节点信息是否可用", notes = "更新节点信息是否可用结果")
     @RequestMapping(value = "/useable", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson useableSysManageRes(SysManageResourceUpdateStateDTO updateStateDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -229,6 +234,7 @@ public class SysManageResouceApi extends BaseApi {
                     "    }\n" +
                     "}")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequiresAuthentication
     public ResultJson listRoleTree() {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -280,6 +286,7 @@ public class SysManageResouceApi extends BaseApi {
                     "    }\n" +
                     "}")
     @RequestMapping(value = "/listByRole", method = RequestMethod.GET)
+    @RequiresAuthentication
     public ResultJson listRoleTreeByRole() {
         Integer userId = getCurrentManageUserId();
         if (userId == -1) {
@@ -337,6 +344,7 @@ public class SysManageResouceApi extends BaseApi {
                     "    }\n" +
                     "}")
     @RequestMapping(value = "/listRoleTree", method = RequestMethod.GET)
+    @RequiresAuthentication
     public ResultJson listRoleWithAllTree(Integer roleId) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();

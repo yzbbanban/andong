@@ -33,6 +33,7 @@ public class GroupUrlApi {
 
     @ApiOperation(value = "分页获取所有的url数据")
     @PostMapping(value = "list")
+    @RequiresAuthentication
     public ResultJson<ResultList<GroupUrl>> getList(GroupUrlSearchDTO dto) {
 
         int count = groupUrlService.getGroupUrlCount(dto);
@@ -45,6 +46,7 @@ public class GroupUrlApi {
 
     @ApiOperation(value = "编辑url数据")
     @PostMapping(value = "update")
+    @RequiresAuthentication
     public ResultJson<String> update(GroupUrlDTO groupUrlDTO) {
         if (groupUrlService.updateGroupUrl(groupUrlDTO)) {
             return ResultJson.createBySuccess();
@@ -54,6 +56,7 @@ public class GroupUrlApi {
 
     @ApiOperation(value = "增加url数据")
     @PostMapping(value = "add")
+    @RequiresAuthentication
     public ResultJson<String> add(GroupUrlDTO groupUrlDTO) {
         if (groupUrlService.addGroupUrl(groupUrlDTO)) {
             return ResultJson.createBySuccess();
