@@ -72,6 +72,10 @@ public class ShiroConfig {
         filterRuleMap.put("/v1/user/info/modify", "anon");
         filterRuleMap.put("/v1/manage/sysUser/login", "anon");
         filterRuleMap.put("/public/api/index/**", "anon");
+        filterRuleMap.put("/css/**", "anon");
+        filterRuleMap.put("/images/**", "anon");
+        filterRuleMap.put("/js/**", "anon");
+        filterRuleMap.put("/json/**", "anon");
         factoryBean.setFilterChainDefinitionMap(filterRuleMap);
         return factoryBean;
     }
