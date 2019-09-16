@@ -45,7 +45,7 @@ public class ObserveApi extends BaseApi {
     @RequiresAuthentication
     public ResultJson<ObservePath> getUrl() {
         ObservePath path = new ObservePath();
-        path.setCustomUrl("http://www.yzbbanban.com:8087/#/index");
+        path.setCustomUrl("http://www.yzbbanban.com:8087/#/index/1");
         path.setStaffUrl("http://www.yzbbanban.com:8087/#/emIndex");
         return ResultJson.createBySuccess(path);
     }
