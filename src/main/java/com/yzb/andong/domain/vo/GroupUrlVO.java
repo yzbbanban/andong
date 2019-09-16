@@ -11,6 +11,8 @@ public class GroupUrlVO {
     private String customUrl;
     @ApiModelProperty("线别 id")
     private String xid;
+    @ApiModelProperty("备注")
+    private String remark;
 
     public String getStaffUrl() {
         return staffUrl;
@@ -36,12 +38,21 @@ public class GroupUrlVO {
         this.xid = xid;
     }
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     @Override
     public String toString() {
         return "GroupUrlVO{" +
                 "staffUrl='" + staffUrl + '\'' +
                 ", customUrl='" + customUrl + '\'' +
                 ", xid='" + xid + '\'' +
+                ", remark='" + remark + '\'' +
                 '}';
     }
 }
