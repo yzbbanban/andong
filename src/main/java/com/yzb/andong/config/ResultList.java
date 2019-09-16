@@ -16,6 +16,14 @@ public class ResultList<T> {
     @ApiModelProperty("列表数据")
     private List<T> dataList;
 
+    public ResultList() {
+    }
+
+    public ResultList(Integer count, List<T> list) {
+        this.count = count;
+        this.dataList = list;
+    }
+
     public Integer getCount() {
         return count;
     }

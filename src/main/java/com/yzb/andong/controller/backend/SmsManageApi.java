@@ -8,6 +8,7 @@ import com.yzb.andong.domain.orm.SysManageUser;
 import com.yzb.andong.service.ifac.SysManageUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,7 @@ public class SmsManageApi extends BaseApi {
 
     @ApiOperation(value = "发送更改密码短信")
     @PostMapping(value = "modify")
+    @RequiresAuthentication
     public ResultJson<String> getModifySms() {
         Integer userId = getCurrentManageUserId();
         if (userId == -1) {

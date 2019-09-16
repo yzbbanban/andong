@@ -7,12 +7,115 @@
 	  id,sysUserId,`group`,staffUrl,customUrl,xid,remark,createTime,updateTime
     </sql>
 
+    <insert id="addGroupUrl">
+        INSERT INTO manage_role_relation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sysUserId != null">
+                sysUserId,
+            </if>
+            <if test="group != null">
+                `group`,
+            </if>
+            <if test="staffUrl != null and staffUrl!=''">
+                `staffUrl`,
+            </if>
+            <if test="customUrl != null and customUrl!=''">
+                `customUrl`,
+            </if>
+            <if test="xid != null and xid!=''">
+                `xid`,
+            </if>
+            <if test="remark != null">
+                `remark`,
+            </if>
+            <if test="createTime != null">
+                `createTime`,
+            </if>
+            <if test="updateTime != null">
+                `updateTime`,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="sysUserId != null">
+                #{sysUserId},
+            </if>
+            <if test="group != null">
+                #{group},
+            </if>
+            <if test="staffUrl != null and staffUrl!=''">
+                #{staffUrl},
+            </if>
+            <if test="customUrl != null and customUrl!=''">
+                #{customUrl},
+            </if>
+            <if test="xid != null and xid!=''">
+                #{xid},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            unix_timestamp(NOW()),
+            unix_timestamp(NOW())
+        </trim>
+    </insert>
+    <update id="updateGroupUrl">
+        UPDATE group_url
+        <trim prefix="set" suffixOverrides=",">
+            <if test="sysUserId != null">
+                sysUserId=#{sysUserId},
+            </if>
+            <if test="group != null">
+                `group`=#{group},
+            </if>
+            <if test="staffUrl != null">
+                staffUrl=#{staffUrl},
+            </if>
+            <if test="customUrl != null">
+                customUrl=#{customUrl},
+            </if>
+            <if test="xid != null">
+                xid=#{xid},
+            </if>
+            <if test="remark != null">
+                remark=#{remark},
+            </if>
+            updateTime=unix_timestamp(NOW())
+        </trim>
+        WHERE
+        id = #{id}
+    </update>
+
     <!--获取 url 信息-->
     <select id="getBaseUrl" resultType="com.yzb.andong.domain.orm.GroupUrl">
         SELECT
         <include refid="baseUrl"></include>
         FROM group_url
         WHERE sysUserId=#{sysUserId}
+    </select>
+    <select id="getGroupUrlCount" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM group_url
+        WHERE 1=1
+        <if test="xid != null and xid!=''">
+           AND xid=#{xid}
+        </if>
+        <if test="sysUserId != null">
+            AND sysUserId=#{sysUserId}
+        </if>
+    </select>
+    <select id="getGroupUrlList" resultType="com.yzb.andong.domain.orm.GroupUrl">
+        SELECT
+        <include refid="baseUrl"></include>
+        FROM group_url
+        WHERE 1=1
+        <if test="xid != null and xid!=''">
+            AND xid=#{xid}
+        </if>
+        <if test="sysUserId != null">
+            AND sysUserId=#{sysUserId}
+        </if>
+        limit #{pageNo},#{pageSize}
     </select>
 
 </mapper>

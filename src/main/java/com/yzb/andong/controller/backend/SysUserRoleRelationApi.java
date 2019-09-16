@@ -8,6 +8,7 @@ import com.yzb.andong.domain.orm.SysUserRoleRelation;
 import com.yzb.andong.service.ifac.SysUserRoleRelationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,7 @@ public class SysUserRoleRelationApi extends BaseApi {
 
     @ApiOperation(value = "王斑：保存用户与角色关系", notes = "添加")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson addSysUserRole(SysUserRoleRelation sysUserRoleRelation) {
         ResultJson resultJson = new ResultJson();
         if (getCurrentManageUserId() == -1) {
@@ -62,6 +64,7 @@ public class SysUserRoleRelationApi extends BaseApi {
 
     @ApiOperation(value = "王斑：更新用户与角色关系", notes = "更新结果信息")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson updateSysUserRole(SysUserRoleRelation sysUserRoleRelation) {
         ResultJson resultJson = new ResultJson();
         if (getCurrentManageUserId() == -1) {

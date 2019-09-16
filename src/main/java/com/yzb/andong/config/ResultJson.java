@@ -1,5 +1,7 @@
 package com.yzb.andong.config;
 
+import java.util.List;
+
 /**
  * Created by brander on 2019/1/12
  */
@@ -32,6 +34,7 @@ public class ResultJson<T> {
         this.code = code;
         this.message = message;
     }
+
 
     public Integer getCode() {
         return code;
@@ -95,6 +98,11 @@ public class ResultJson<T> {
 
     public static <T> ResultJson<T> createByNoAuth() {
         return new ResultJson<T>(ResultStatus.NO_AUTH.getCode(), ResultStatus.NO_AUTH.getMessage());
+    }
+
+
+    public static <T> ResultJson<ResultList<T>> createList(Integer count, List<T> list) {
+        return createBySuccess(new ResultList<>(count, list));
     }
 
 

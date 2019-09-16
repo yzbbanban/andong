@@ -1,5 +1,7 @@
 package com.yzb.andong.dao;
 
+import com.yzb.andong.domain.dto.GroupUrlDTO;
+import com.yzb.andong.domain.dto.GroupUrlSearchDTO;
 import com.yzb.andong.domain.orm.GroupUrl;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +13,39 @@ import java.util.List;
 @Transactional
 public interface GroupUrlDao {
 
+    /**
+     * 获取 url 信息
+     *
+     * @param sysUserId sysUserId
+     * @return url 信息
+     */
     List<GroupUrl> getBaseUrl(Integer sysUserId);
 
+    /**
+     * @param dto dto
+     * @return count
+     */
+    int getGroupUrlCount(GroupUrlSearchDTO dto);
+
+    /**
+     * @param setPageParam dto
+     * @return list
+     */
+    List<GroupUrl> getGroupUrlList(GroupUrlSearchDTO setPageParam);
+
+    /**
+     * updateGroupUrl
+     *
+     * @param groupUrlDTO groupUrlDTO
+     * @return row
+     */
+    int updateGroupUrl(GroupUrlDTO groupUrlDTO);
+
+    /**
+     * addGroupUrl
+     *
+     * @param groupUrlDTO groupUrlDTO
+     * @return row
+     */
+    int addGroupUrl(GroupUrlDTO groupUrlDTO);
 }

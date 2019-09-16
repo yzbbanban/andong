@@ -15,6 +15,7 @@ import com.yzb.andong.service.ServiceException;
 import com.yzb.andong.service.ifac.SysManageUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -115,6 +116,7 @@ public class SysManageUserApi extends BaseApi {
 
     @ApiOperation(value = "王斑：系统管理用户注册", notes = "注册成功与失败，带账号重复提示")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson<String> add(SysManageUserAddDTO addDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -208,6 +210,7 @@ public class SysManageUserApi extends BaseApi {
                     "  }\n" +
                     "}")
     @RequestMapping(value = "/info", method = RequestMethod.GET)
+    @RequiresAuthentication
     public ResultJson<SysManageUserVO> getSysManageUser(Integer id) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -252,6 +255,7 @@ public class SysManageUserApi extends BaseApi {
                     "  }\n" +
                     "}")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequiresAuthentication
     public ResultJson<ResultList<SysManageUserVO>> listSysManageUser(PageParamDTO pageParamsDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -288,6 +292,7 @@ public class SysManageUserApi extends BaseApi {
 
     @ApiOperation(value = "王斑：更新用户信息", notes = "更新成功与失败信息提示")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson<String> updateSysManageUser(SysManageUserUpdateDTO userUpdateDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -318,6 +323,7 @@ public class SysManageUserApi extends BaseApi {
 
     @ApiOperation(value = "王斑：锁定用户", notes = "锁定用户结果")
     @RequestMapping(value = "/lock", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson<String> lockSysManageUser(SysManageUserLockDTO userLockDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -351,6 +357,7 @@ public class SysManageUserApi extends BaseApi {
 
     @ApiOperation(value = "王斑：更改用户密码", notes = "更改密码成功与失败")
     @RequestMapping(value = "/modifyPwd", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson<String> updateSysManageUserPassword(SysManageUserChangePwdConvertDTO pwdDTO) {
         Integer userId = getCurrentManageUserId();
         if (userId == -1) {
@@ -409,6 +416,7 @@ public class SysManageUserApi extends BaseApi {
 
     @ApiOperation(value = "王斑：查询手机号是否存在", notes = "查询手机号是否存在，存在返回200")
     @RequestMapping(value = "/checkMobile", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson<String> checkMobile(SysManageSmsMessageDTO smsMessageDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -441,6 +449,7 @@ public class SysManageUserApi extends BaseApi {
 
     @ApiOperation(value = "王斑：查询用户是否存在", notes = "查询用户是否存在，存在返回200")
     @RequestMapping(value = "/checkAccount", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson<String> checkAccount(String account) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -472,6 +481,7 @@ public class SysManageUserApi extends BaseApi {
                     "  \"data\": \"手机号\"\n" +
                     "}")
     @RequestMapping(value = "/getMobile", method = RequestMethod.GET)
+    @RequiresAuthentication
     public ResultJson<String> getMobile(String account) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -503,6 +513,7 @@ public class SysManageUserApi extends BaseApi {
                     "  \"data\": \"手机号\"\n" +
                     "}")
     @RequestMapping(value = "/getMobileById", method = RequestMethod.GET)
+    @RequiresAuthentication
     public ResultJson<String> getMobileById(Integer id) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();

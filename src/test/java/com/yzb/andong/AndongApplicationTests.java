@@ -32,7 +32,7 @@ public class AndongApplicationTests {
                 .withoutInlineSchema()
                 .build();
         //设置swagger-api的json来源
-        Swagger2MarkupConverter.from(new URL("http://localhost:9099/v2/api-docs"))
+        Swagger2MarkupConverter.from(new URL("http://www.yzbbanban.com:9095/v2/api-docs"))
                 .withConfig(config)
                 .build()
                 .toFolder(Paths.get("./docs/asciidoc/generated"));//设置生成文件的路径
@@ -53,7 +53,7 @@ public class AndongApplicationTests {
                 .withoutInlineSchema()
                 .build();
 
-        Swagger2MarkupConverter.from(new URL("http://localhost:9099/v2/api-docs"))
+        Swagger2MarkupConverter.from(new URL("http://www.yzbbanban.com:9095/v2/api-docs"))
                 .withConfig(config)
                 .build()
                 .toFolder(Paths.get("./docs/markdown/generated"));
@@ -73,7 +73,7 @@ public class AndongApplicationTests {
                 .withoutInlineSchema()
                 .build();
 
-        Swagger2MarkupConverter.from(new URL("http://localhost:9099/v2/api-docs"))
+        Swagger2MarkupConverter.from(new URL("http://www.yzbbanban.com:9095/v2/api-docs"))
                 .withConfig(config)
                 .build()
                 .toFolder(Paths.get("./docs/confluence/generated"));
@@ -94,7 +94,7 @@ public class AndongApplicationTests {
                 .withoutInlineSchema()
                 .build();
 
-        Swagger2MarkupConverter.from(new URL("http://localhost:9099/v2/api-docs"))
+        Swagger2MarkupConverter.from(new URL("http://www.yzbbanban.com:9095/v2/api-docs"))
                 .withConfig(config)
                 .build()
                 .toFile(Paths.get("./docs/asciidoc/generated/all"));
@@ -115,7 +115,7 @@ public class AndongApplicationTests {
                 .withoutInlineSchema()
                 .build();
 
-        Swagger2MarkupConverter.from(new URL("http://localhost:9099/v2/api-docs"))
+        Swagger2MarkupConverter.from(new URL("http://www.yzbbanban.com:9095/v2/api-docs"))
                 .withConfig(config)
                 .build()
                 .toFile(Paths.get("./docs/markdown/generated/all"));

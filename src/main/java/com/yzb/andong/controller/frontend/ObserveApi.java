@@ -8,6 +8,7 @@ import com.yzb.andong.domain.orm.ObservePath;
 import com.yzb.andong.service.ifac.GroupUrlService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,7 @@ public class ObserveApi extends BaseApi {
 
     @ApiOperation(value = "获取展屏地址url")
     @GetMapping(value = "url")
+    @RequiresAuthentication
     public ResultJson<List<GroupUrl>> getUrl() {
         Integer sysUserId = getCurrentManageUserId();
 

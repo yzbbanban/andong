@@ -36,12 +36,5 @@ public class ExceptionController {
         return resultJson;
     }
 
-    @ExceptionHandler(value = AuthenticationException.class)
-    public ResultJson authExceptionHandler(Exception ex){
-        ResultJson resultJson = new ResultJson();
-        resultJson.setStatus(ResultStatus.NO_AUTH);
-        return resultJson;
-    }
-
 }
 

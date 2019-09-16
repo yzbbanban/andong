@@ -13,6 +13,7 @@ import com.yzb.andong.service.ifac.SysManageRoleService;
 import com.yzb.andong.service.ifac.SysResourceRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
@@ -43,6 +44,7 @@ public class SysManageRoleApi extends BaseApi {
 
     @ApiOperation(value = "王斑：保存系统角色信息", notes = "保存成功或失败提示")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson addSysManageRole(SysManageRoleDTO sysManageRoleDTO) {
         ResultJson resultJson = new ResultJson();
         if (getCurrentManageUserId() == -1) {
@@ -74,6 +76,7 @@ public class SysManageRoleApi extends BaseApi {
 
     @ApiOperation(value = "王斑：修改角色信息", notes = "修改角色成功或失败提示")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson updateSySManageRole(SysManageRoleUpdateDTO roleUpdateDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -106,6 +109,7 @@ public class SysManageRoleApi extends BaseApi {
 
     @ApiOperation(value = "王斑：修改角色状态", notes = "修改状态成功或失败提示")
     @RequestMapping(value = "/updateState", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson updateSySManageRoleState(SysManageRoleStateDTO roleStateDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -158,6 +162,7 @@ public class SysManageRoleApi extends BaseApi {
                     "  }\n" +
                     "}")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequiresAuthentication
     public ResultJson<ResultList<SysManageRole>> listSySManageRole(PageParamDTO pageParamsDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();
@@ -203,6 +208,7 @@ public class SysManageRoleApi extends BaseApi {
 
     @ApiOperation(value = "王斑：更新角色对应的资源", notes = "更新角色(王斑)")
     @RequestMapping(value = "/updateRes", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson updateRole(SysManageResourceRoleAddDTO resourceRoleAddDTO) {
         if (getCurrentManageUserId() == -1) {
             return ResultJson.createByNoAuth();

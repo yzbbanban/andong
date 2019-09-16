@@ -10,6 +10,7 @@ import com.yzb.andong.domain.vo.UserVO;
 import com.yzb.andong.service.ifac.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/manage/user")
 @Api(tags = {"manage用户管理 api"})
+@RequiresAuthentication
 public class UserManageApi {
 
     @Autowired
@@ -33,6 +35,7 @@ public class UserManageApi {
 
     @ApiOperation(value = "王斑：锁定用户", notes = "")
     @RequestMapping(value = "/lock", method = RequestMethod.POST)
+    @RequiresAuthentication
     public ResultJson lockUser(UserLockDTO dto) {
         if (dto == null
                 || dto.getUseable() == null
@@ -56,6 +59,7 @@ public class UserManageApi {
 
     @ApiOperation(value = "王斑：获取用户列表", notes = "")
     @GetMapping(value = "/list")
+    @RequiresAuthentication
     public ResultJson listUser(UserSearchDTO dto) {
 
         if (dto == null

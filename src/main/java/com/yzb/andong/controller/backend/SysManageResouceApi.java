@@ -13,6 +13,7 @@ import com.yzb.andong.service.ifac.SysManageResourceService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.sf.json.JSONObject;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/v1/manage/sysRes")
 @Api(tags = {"manage系统管理资源api"})
+@RequiresAuthentication
 public class SysManageResouceApi extends BaseApi {
     /**
      * 系统管理资源服务

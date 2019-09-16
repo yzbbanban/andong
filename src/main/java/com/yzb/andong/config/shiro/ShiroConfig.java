@@ -50,6 +50,7 @@ public class ShiroConfig {
 
         factoryBean.setSecurityManager(securityManager);
         factoryBean.setUnauthorizedUrl("/401");
+
         Map<String, String> filterRuleMap = new HashMap<>();
         // 所有请求通过我们自己的JWT Filter
         filterRuleMap.put("/**", "jwt");
@@ -57,9 +58,14 @@ public class ShiroConfig {
         filterRuleMap.put("/401", "anon");
         //登陆注册发短信不走filter
         filterRuleMap.put("/v1/manage/sms/**", "anon");
-        filterRuleMap.put("/v2/api-docs", "anon");
-        filterRuleMap.put("/swagger*/**", "anon");
+
         filterRuleMap.put("/swagger-ui.html", "anon");
+        filterRuleMap.put("/swagger-resources", "anon");
+        filterRuleMap.put("/swagger-resources/configuration/security", "anon");
+        filterRuleMap.put("/swagger-resources/configuration/ui", "anon");
+        filterRuleMap.put("/v2/api-docs", "anon");
+        filterRuleMap.put("/webjars/springfox-swagger-ui/**", "anon");
+
         filterRuleMap.put("/v1/app/sms/**", "anon");
         filterRuleMap.put("/v1/user/info/register", "anon");
         filterRuleMap.put("/v1/user/info/login", "anon");

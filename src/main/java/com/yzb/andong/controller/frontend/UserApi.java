@@ -14,6 +14,7 @@ import com.yzb.andong.domain.vo.UserVO;
 import com.yzb.andong.service.ifac.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
@@ -153,6 +154,7 @@ public class UserApi extends BaseApi {
 
     @ApiOperation(value = "更新用户信息")
     @PostMapping(value = "update")
+    @RequiresAuthentication
     public ResultJson<String> update(Integer id, Boolean status) {
 
         if (getCurrentUserId() == -1) {
