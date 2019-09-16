@@ -5,15 +5,18 @@ import com.yzb.andong.controller.BaseApi;
 import com.yzb.andong.domain.dto.SmsMessageDTO;
 import com.yzb.andong.domain.orm.GroupUrl;
 import com.yzb.andong.domain.orm.ObservePath;
+import com.yzb.andong.domain.vo.GroupUrlVO;
 import com.yzb.andong.service.ifac.GroupUrlService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,14 +33,31 @@ public class ObserveApi extends BaseApi {
     private GroupUrlService groupUrlService;
 
     @ApiOperation(value = "获取展屏地址url")
-    @GetMapping(value = "url2")
+    @GetMapping(value = "url3")
     @RequiresAuthentication
-    public ResultJson<List<GroupUrl>> getUrl2() {
+    public ResultJson<List<GroupUrl>> getUrl3() {
         Integer sysUserId = getCurrentManageUserId();
 
         List<GroupUrl> groupUrls = groupUrlService.getGroupUrlInfo(sysUserId);
 
         return ResultJson.createBySuccess(groupUrls);
+    }
+
+    @ApiOperation(value = "获取展屏地址url2")
+    @GetMapping(value = "url2")
+    @RequiresAuthentication
+    public ResultJson<List<GroupUrlVO>> getUrl2() {
+        Integer sysUserId = getCurrentManageUserId();
+
+        List<GroupUrl> groupUrls = groupUrlService.getGroupUrlInfo(sysUserId);
+        List<GroupUrlVO> voList = new ArrayList<>();
+        for (int i = 0, len = groupUrls.size(); i < len; i++) {
+            GroupUrlVO vo = new GroupUrlVO();
+            BeanUtils.copyProperties(groupUrls.get(i), vo);
+            voList.add(vo);
+        }
+
+        return ResultJson.createBySuccess(voList);
     }
 
     @ApiOperation(value = "获取展屏地址url")

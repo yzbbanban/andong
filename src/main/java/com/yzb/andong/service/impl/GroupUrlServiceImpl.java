@@ -30,6 +30,7 @@ public class GroupUrlServiceImpl implements GroupUrlService {
         return groupUrlDao.getBaseUrl(sysUserId);
     }
 
+
     /**
      * 获取url count
      *
