@@ -13,7 +13,7 @@ public class GroupUrlDTO {
     @ApiModelProperty("登录用户")
     private String sysUserId;
     @ApiModelProperty("组别")
-    private String group;
+    private String urlGroup;
     @ApiModelProperty("员工看板")
     private String staffUrl;
     @ApiModelProperty("客户看板")
@@ -39,12 +39,12 @@ public class GroupUrlDTO {
         this.sysUserId = sysUserId;
     }
 
-    public String getGroup() {
-        return group;
+    public String getUrlGroup() {
+        return urlGroup;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setUrlGroup(String urlGroup) {
+        this.urlGroup = urlGroup;
     }
 
     public String getStaffUrl() {
@@ -81,10 +81,10 @@ public class GroupUrlDTO {
 
     @Override
     public String toString() {
-        return "GroupUrl{" +
+        return "GroupUrlDTO{" +
                 "id=" + id +
                 ", sysUserId='" + sysUserId + '\'' +
-                ", group='" + group + '\'' +
+                ", urlGroup='" + urlGroup + '\'' +
                 ", staffUrl='" + staffUrl + '\'' +
                 ", customUrl='" + customUrl + '\'' +
                 ", xid='" + xid + '\'' +
