@@ -11,6 +11,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,13 +33,13 @@ public class GroupUrlApi {
 
 
     @ApiOperation(value = "分页获取所有的url数据")
-    @PostMapping(value = "list")
+    @GetMapping(value = "list")
     @RequiresAuthentication
-    public ResultJson<ResultList<GroupUrl>> getList(GroupUrlSearchDTO dto) {
+    public ResultJson<ResultList<GroupUrl>> getList(PageParamDTO dto) {
 
         int count = groupUrlService.getGroupUrlCount(dto);
         List<GroupUrl> list = new ArrayList<>();
-        if (count < 0) {
+        if (count > 0) {
             list = groupUrlService.getGroupUrlList(dto);
         }
         return ResultJson.createList(count, list);

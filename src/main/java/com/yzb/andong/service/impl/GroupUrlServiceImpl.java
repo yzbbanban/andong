@@ -5,6 +5,7 @@ import com.yzb.andong.dao.GroupUrlDao;
 import com.yzb.andong.domain.dto.GroupUrlDTO;
 import com.yzb.andong.domain.dto.GroupUrlSearchDTO;
 import com.yzb.andong.domain.orm.GroupUrl;
+import com.yzb.andong.domain.orm.PageParamDTO;
 import com.yzb.andong.service.ifac.GroupUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class GroupUrlServiceImpl implements GroupUrlService {
      * @return count
      */
     @Override
-    public int getGroupUrlCount(GroupUrlSearchDTO dto) {
+    public int getGroupUrlCount(PageParamDTO dto) {
         return groupUrlDao.getGroupUrlCount(dto);
     }
 
@@ -47,7 +48,7 @@ public class GroupUrlServiceImpl implements GroupUrlService {
      * @return list
      */
     @Override
-    public List<GroupUrl> getGroupUrlList(GroupUrlSearchDTO dto) {
+    public List<GroupUrl> getGroupUrlList(PageParamDTO dto) {
         return groupUrlDao.getGroupUrlList(PageParamUtil.setPageParam(dto));
     }
 

@@ -109,9 +109,6 @@
         <include refid="baseUrl"></include>
         FROM group_url
         WHERE 1=1
-        <if test="xid != null and xid!=''">
-            AND xid=#{xid}
-        </if>
         <if test="sysUserId != null">
             AND sysUserId=#{sysUserId}
         </if>

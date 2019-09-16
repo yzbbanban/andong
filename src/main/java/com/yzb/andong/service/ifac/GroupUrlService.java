@@ -3,6 +3,7 @@ package com.yzb.andong.service.ifac;
 import com.yzb.andong.domain.dto.GroupUrlDTO;
 import com.yzb.andong.domain.dto.GroupUrlSearchDTO;
 import com.yzb.andong.domain.orm.GroupUrl;
+import com.yzb.andong.domain.orm.PageParamDTO;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface GroupUrlService {
      * @param dto dto
      * @return Count
      */
-    int getGroupUrlCount(GroupUrlSearchDTO dto);
+    int getGroupUrlCount(PageParamDTO dto);
 
     /**
      * List
@@ -34,7 +35,7 @@ public interface GroupUrlService {
      * @param dto dto
      * @return List
      */
-    List<GroupUrl> getGroupUrlList(GroupUrlSearchDTO dto);
+    List<GroupUrl> getGroupUrlList(PageParamDTO dto);
 
     /**
      * 更新

@@ -30,14 +30,24 @@ public class ObserveApi extends BaseApi {
     private GroupUrlService groupUrlService;
 
     @ApiOperation(value = "获取展屏地址url")
-    @GetMapping(value = "url")
+    @GetMapping(value = "url2")
     @RequiresAuthentication
-    public ResultJson<List<GroupUrl>> getUrl() {
+    public ResultJson<List<GroupUrl>> getUrl2() {
         Integer sysUserId = getCurrentManageUserId();
 
         List<GroupUrl> groupUrls = groupUrlService.getGroupUrlInfo(sysUserId);
 
         return ResultJson.createBySuccess(groupUrls);
+    }
+
+    @ApiOperation(value = "获取展屏地址url")
+    @GetMapping(value = "url")
+    @RequiresAuthentication
+    public ResultJson<ObservePath> getUrl() {
+        ObservePath path = new ObservePath();
+        path.setCustomUrl("http://www.yzbbanban.com:8087/#/index");
+        path.setStaffUrl("http://www.yzbbanban.com:8087/#/emIndex");
+        return ResultJson.createBySuccess(path);
     }
 
 }
