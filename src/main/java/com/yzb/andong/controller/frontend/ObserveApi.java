@@ -46,21 +46,23 @@ public class ObserveApi extends BaseApi {
     @ApiOperation(value = "获取展屏地址url2")
     @GetMapping(value = "dUrl")
     @RequiresAuthentication
-    public ResultJson<List<String>> getDUrl() {
+    public ResultJson<List<List<String>>> getDUrl() {
         Integer sysUserId = getCurrentManageUserId();
 
         List<GroupUrl> groupUrls = groupUrlService.getGroupUrlInfo(sysUserId);
-        List<String> voList = new ArrayList<>();
+        List<List<String>> resultList = new ArrayList<>();
         for (int i = 0, len = groupUrls.size(); i < len; i++) {
             GroupUrlVO vo = new GroupUrlVO();
             BeanUtils.copyProperties(groupUrls.get(i), vo);
             String cUrl = vo.getCustomUrl();
             String sUrl = vo.getStaffUrl();
+            List<String> voList = new ArrayList<>();
             voList.add(cUrl);
             voList.add(sUrl);
+            resultList.add(voList);
         }
 
-        return ResultJson.createBySuccess(voList);
+        return ResultJson.createBySuccess(resultList);
     }
 
     @ApiOperation(value = "获取展屏地址url")
