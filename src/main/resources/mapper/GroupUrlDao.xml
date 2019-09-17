@@ -4,7 +4,7 @@
 <mapper namespace="com.yzb.andong.dao.GroupUrlDao">
 
     <sql id="baseUrl">
-	  id,sysUserId,urlGroup,staffUrl,customUrl,xid,remark,createTime,updateTime
+	  id,sysUserId,urlGroup,staffUrl,customUrl,xid,remark,delTag,createTime,updateTime
     </sql>
 
     <insert id="addGroupUrl">
@@ -28,8 +28,9 @@
             <if test="remark != null">
                 remark,
             </if>
-                createTime,
-                updateTime,
+            delTag,
+            createTime,
+            updateTime,
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="sysUserId != null">
@@ -50,6 +51,7 @@
             <if test="remark != null">
                 #{remark},
             </if>
+            0,
             unix_timestamp(NOW()),
             unix_timestamp(NOW())
         </trim>
@@ -80,6 +82,13 @@
         WHERE
         id = #{id}
     </update>
+    <update id="updateDelGroupUrl">
+        UPDATE group_url
+        SET
+        delTag=1,
+        WHERE
+        id = #{id}
+    </update>
 
     <!--获取 url 信息-->
     <select id="getBaseUrl" resultType="com.yzb.andong.domain.orm.GroupUrl">
@@ -87,6 +96,8 @@
         <include refid="baseUrl"></include>
         FROM group_url
         WHERE sysUserId=#{sysUserId}
+        AND
+        delTag=0
     </select>
     <select id="getGroupUrlCount" resultType="java.lang.Integer">
         SELECT

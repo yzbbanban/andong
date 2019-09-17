@@ -53,4 +53,12 @@ public interface GroupUrlDao {
      * @return row
      */
     int addGroupUrl(GroupUrlDTO groupUrlDTO);
+
+    /**
+     * groupUrlDTO
+     *
+     * @param groupUrlDTO groupUrlDTO
+     * @return groupUrlDTO
+     */
+    int updateDelGroupUrl(GroupUrlDTO groupUrlDTO);
 }

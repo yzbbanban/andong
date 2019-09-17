@@ -52,4 +52,12 @@ public interface GroupUrlService {
      * @return 成功
      */
     boolean addGroupUrl(GroupUrlDTO groupUrlDTO);
+
+    /**
+     * del
+     *
+     * @param id gu
+     * @return tr
+     */
+    boolean delGroupUrl(Integer id);
 }

@@ -65,4 +65,15 @@ public class GroupUrlApi {
         return ResultJson.createByError();
 
     }
+
+    @ApiOperation(value = "删除url数据")
+    @PostMapping(value = "del")
+    @RequiresAuthentication
+    public ResultJson<String> del(Integer id) {
+        if (groupUrlService.delGroupUrl(id)) {
+            return ResultJson.createBySuccess();
+        }
+        return ResultJson.createByError();
+
+    }
 }

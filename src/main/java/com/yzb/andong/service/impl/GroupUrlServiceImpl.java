@@ -74,4 +74,15 @@ public class GroupUrlServiceImpl implements GroupUrlService {
     public boolean addGroupUrl(GroupUrlDTO groupUrlDTO) {
         return groupUrlDao.addGroupUrl(groupUrlDTO) > 0;
     }
+
+    /**
+     * del
+     *
+     * @param groupUrlDTO gu
+     * @return tr
+     */
+    @Override
+    public boolean delGroupUrl(GroupUrlDTO groupUrlDTO) {
+        return groupUrlDao.updateDelGroupUrl(groupUrlDTO) > 0;
+    }
 }
