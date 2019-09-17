@@ -78,11 +78,13 @@ public class GroupUrlServiceImpl implements GroupUrlService {
     /**
      * del
      *
-     * @param groupUrlDTO gu
+     * @param id gu
      * @return tr
      */
     @Override
-    public boolean delGroupUrl(GroupUrlDTO groupUrlDTO) {
-        return groupUrlDao.updateDelGroupUrl(groupUrlDTO) > 0;
+    public boolean delGroupUrl(Integer id) {
+        return groupUrlDao.updateDelGroupUrl(id) > 0;
     }
+
+
 }

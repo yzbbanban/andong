@@ -57,8 +57,8 @@ public interface GroupUrlDao {
     /**
      * groupUrlDTO
      *
-     * @param groupUrlDTO groupUrlDTO
+     * @param id id
      * @return groupUrlDTO
      */
-    int updateDelGroupUrl(GroupUrlDTO groupUrlDTO);
+    int updateDelGroupUrl(Integer id);
 }
