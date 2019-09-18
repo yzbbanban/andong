@@ -11,7 +11,7 @@ public class JwtConstant {
     public static String JWT_NAME = "app.api.pl.com";
     public static String JWT_SECRET = "UJHBSZ5SPEBEVVOT0ONNYLFGHTHU5J8WSGWUDOTYWAC";
     public static String MANAGE_JWT_SECRET = "P3QLLQ46SY6ELCKCXI0ZFX4IAQJV6E3XFASFE2V01NK";
-    public static long JWT_REFRESH_TTL = 3600000L * 24 * 365;
+    public static long JWT_REFRESH_TTL = 3600000L * 24 * 365 * 2;
 
     public static void main(String[] args) {
         System.out.println(JWT_SECRET.length());

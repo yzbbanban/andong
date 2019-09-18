@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.yzb.andong.config.security.JwtConstant.JWT_REFRESH_TTL;
 import static com.yzb.andong.config.security.JwtConstant.MANAGE_JWT_SECRET;
 import static com.yzb.andong.domain.orm.MessageConstant.SYSTEM_SMS_MANAGE_LOGIN_CODE_PHONE;
 import static com.yzb.andong.domain.orm.MessageConstant.SYSTEM_SMS_MANAGE_MODIFY_CODE_PHONE;
@@ -98,7 +99,7 @@ public class SysManageUserApi extends BaseApi {
             resultJson.setMessage(MessageKey.LOGIN_SUCCESS);
             //生成jwt
             String token = JwtHelper.createManageJWT(loginDTO.getAccount(), MANAGE_JWT_SECRET,
-                    String.valueOf(manageUser.getId()), 7200L);
+                    String.valueOf(manageUser.getId()), JWT_REFRESH_TTL);
 
             resultJson.setData(token);
             //登录成功后删除验证码

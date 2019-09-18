@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.yzb.andong.config.security.JwtConstant.JWT_REFRESH_TTL;
 import static com.yzb.andong.domain.orm.MessageConstant.SYSTEM_SMS_MODIFY_CODE_PHONE;
 import static com.yzb.andong.domain.orm.MessageConstant.SYSTEM_SMS_REGISTER_CODE_PHONE;
 
@@ -100,7 +101,7 @@ public class UserApi extends BaseApi {
 
         //生成 token
         String token = JwtHelper.createJWT(mobile, JWT_SECRET,
-                String.valueOf(userVO.getId()), 7200L);
+                String.valueOf(userVO.getId()), JWT_REFRESH_TTL);
         ResultJson<String> resultJson = new ResultJson<>();
         resultJson.setCode(ResultStatus.OK.getCode());
         resultJson.setMessage(MessageKey.LOGIN_SUCCESS);
