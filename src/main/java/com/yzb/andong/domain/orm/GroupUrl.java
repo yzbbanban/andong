@@ -22,6 +22,8 @@ public class GroupUrl {
     private String xid;
     @ApiModelProperty("备注")
     private String remark;
+    @ApiModelProperty("是否删除了")
+    private Boolean delTag;
     @ApiModelProperty("创建时间")
     private Long createTime;
     @ApiModelProperty("更新时间")
@@ -83,6 +85,14 @@ public class GroupUrl {
         this.remark = remark;
     }
 
+    public Boolean getDelTag() {
+        return delTag;
+    }
+
+    public void setDelTag(Boolean delTag) {
+        this.delTag = delTag;
+    }
+
     public Long getCreateTime() {
         return createTime;
     }
@@ -109,6 +119,7 @@ public class GroupUrl {
                 ", customUrl='" + customUrl + '\'' +
                 ", xid='" + xid + '\'' +
                 ", remark='" + remark + '\'' +
+                ", delTag=" + delTag +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
