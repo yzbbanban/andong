@@ -28,6 +28,8 @@ public class GroupUrl {
     private Long createTime;
     @ApiModelProperty("更新时间")
     private Long updateTime;
+    @ApiModelProperty("手机号")
+    private String mobile;
 
     public Integer getId() {
         return id;
@@ -109,6 +111,14 @@ public class GroupUrl {
         this.updateTime = updateTime;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     @Override
     public String toString() {
         return "GroupUrl{" +
@@ -122,6 +132,7 @@ public class GroupUrl {
                 ", delTag=" + delTag +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", mobile='" + mobile + '\'' +
                 '}';
     }
 }

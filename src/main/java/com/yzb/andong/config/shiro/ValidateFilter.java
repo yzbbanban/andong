@@ -28,7 +28,7 @@ public class ValidateFilter implements Filter {
         resp.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         resp.setHeader("Access-Control-Max-Age", "3600");
         //设置可以接受的请求头
-        resp.setHeader("Access-Control-Allow-Headers", "validatecode, content-type, cache-control, postman-token");
+        resp.setHeader("Access-Control-Allow-Headers", "validatecode, content-type, cache-control, postman-token,Authorization");
         filterChain.doFilter(req,response);
     }
 

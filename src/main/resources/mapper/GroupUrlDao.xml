@@ -7,6 +7,10 @@
 	  id,sysUserId,urlGroup,staffUrl,customUrl,xid,remark,delTag,createTime,updateTime
     </sql>
 
+    <sql id="baseUrlJoin">
+	  gu.id,gu.sysUserId,gu.urlGroup,gu.staffUrl,gu.customUrl,gu.xid,gu.remark,gu.delTag,gu.createTime,gu.updateTime
+    </sql>
+
     <insert id="addGroupUrl">
         INSERT INTO group_url
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -107,9 +111,10 @@
     </select>
     <select id="getGroupUrlList" resultType="com.yzb.andong.domain.orm.GroupUrl">
         SELECT
-        <include refid="baseUrl"></include>
-        FROM group_url
+        <include refid="baseUrlJoin"></include>,mu.mobile
+        FROM group_url gu INNER JOIN  manage_user mu ON gu.sysUserId=mu.id
         WHERE 1=1
+        order by gu.id
         limit #{pageNo},#{pageSize}
     </select>
 
