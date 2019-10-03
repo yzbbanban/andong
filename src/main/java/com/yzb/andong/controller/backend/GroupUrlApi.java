@@ -76,4 +76,13 @@ public class GroupUrlApi {
         return ResultJson.createByError();
 
     }
+
+    @ApiOperation(value = "获取产线信息")
+    @PostMapping(value = "getLine")
+    @RequiresAuthentication
+    public ResultJson<String> getLine() {
+
+        return ResultJson.createBySuccess();
+
+    }
 }

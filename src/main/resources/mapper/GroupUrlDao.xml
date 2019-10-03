@@ -89,7 +89,7 @@
     <update id="updateDelGroupUrl">
         UPDATE group_url
         SET
-        delTag=1
+        delTag=not delTag
         WHERE
         id = #{id}
     </update>
