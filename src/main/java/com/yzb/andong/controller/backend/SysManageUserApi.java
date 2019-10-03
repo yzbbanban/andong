@@ -103,7 +103,7 @@ public class SysManageUserApi extends BaseApi {
 
             resultJson.setData(token);
             //登录成功后删除验证码
-            localCache.removeCache(SYSTEM_SMS_MANAGE_LOGIN_CODE_PHONE + "86" + manageUser.getMobile());
+//            localCache.removeCache(SYSTEM_SMS_MANAGE_LOGIN_CODE_PHONE + "86" + manageUser.getMobile());
             return resultJson;
         } else {
             //密码错误
