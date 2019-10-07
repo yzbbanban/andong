@@ -114,7 +114,7 @@
         <include refid="baseUrlJoin"></include>,mu.mobile
         FROM group_url gu INNER JOIN  manage_user mu ON gu.sysUserId=mu.id
         WHERE 1=1
-        order by gu.id
+        order by gu.id ASC
         limit #{pageNo},#{pageSize}
     </select>
 

@@ -2,6 +2,7 @@ package com.yzb.andong.controller.backend;
 
 import com.yzb.andong.config.ResultJson;
 import com.yzb.andong.config.ResultList;
+import com.yzb.andong.config.util.OkHttpUtils;
 import com.yzb.andong.domain.dto.GroupUrlDTO;
 import com.yzb.andong.domain.dto.GroupUrlSearchDTO;
 import com.yzb.andong.domain.orm.GroupUrl;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.ws.rs.GET;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,11 +80,11 @@ public class GroupUrlApi {
     }
 
     @ApiOperation(value = "获取产线信息")
-    @PostMapping(value = "getLine")
+    @GetMapping(value = "getLine")
     @RequiresAuthentication
     public ResultJson<String> getLine() {
-
-        return ResultJson.createBySuccess();
+        String res = OkHttpUtils.getRequest("http://47.106.181.1:7777/public/api/index/line");
+        return ResultJson.createBySuccess(res);
 
     }
 }
