@@ -63,22 +63,22 @@
     <update id="updateGroupUrl">
         UPDATE group_url
         <trim prefix="set" suffixOverrides=",">
-            <if test="sysUserId != null">
+            <if test="sysUserId != null and sysUserId != ''">
                 sysUserId=#{sysUserId},
             </if>
-            <if test="urlGroup != null">
+            <if test="urlGroup != null and urlGroup != ''">
                 urlGroup=#{urlGroup},
             </if>
-            <if test="staffUrl != null">
+            <if test="staffUrl != null and staffUrl != ''">
                 staffUrl=#{staffUrl},
             </if>
-            <if test="customUrl != null">
+            <if test="customUrl != null and customUrl != ''">
                 customUrl=#{customUrl},
             </if>
-            <if test="xid != null">
+            <if test="xid != null and customUrl != ''">
                 xid=#{xid},
             </if>
-            <if test="remark != null">
+            <if test="remark != null and customUrl != ''">
                 remark=#{remark},
             </if>
             updateTime=unix_timestamp(NOW())
