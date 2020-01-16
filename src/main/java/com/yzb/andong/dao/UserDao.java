@@ -53,4 +53,11 @@ public interface UserDao {
      */
     UserVO getUserInfo(@Param("mobile") String mobile, @Param("countryCode") String countryCode);
 
+    /**
+     * 获取用户
+     *
+     * @param id id
+     * @return user
+     */
+    UserVO getUserById(Integer id);
 }

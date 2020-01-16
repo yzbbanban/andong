@@ -33,6 +33,17 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * 获取用户
+     *
+     * @param id id
+     * @return user
+     */
+    @Override
+    public UserVO getUserInfo(Integer id) {
+        return dao.getUserById(id);
+    }
+
+    /**
      * 更新用户
      *
      * @param dto 用户信息

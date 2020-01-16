@@ -1,13 +1,16 @@
 package com.yzb.andong.controller.backend;
 
+import com.yzb.andong.config.MessageKey;
 import com.yzb.andong.config.ResultJson;
 import com.yzb.andong.config.ResultList;
 import com.yzb.andong.config.util.OkHttpUtils;
+import com.yzb.andong.controller.BaseApi;
 import com.yzb.andong.domain.dto.GroupUrlDTO;
-import com.yzb.andong.domain.dto.GroupUrlSearchDTO;
 import com.yzb.andong.domain.orm.GroupUrl;
 import com.yzb.andong.domain.orm.PageParamDTO;
+import com.yzb.andong.domain.orm.SysManageUser;
 import com.yzb.andong.service.ifac.GroupUrlService;
+import com.yzb.andong.service.ifac.SysManageUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -17,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.GET;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +30,13 @@ import java.util.List;
 @RequestMapping("v1/manage/display")
 @RequiresAuthentication
 @Api(tags = {"获取对应的数据信息"})
-public class GroupUrlApi {
+public class GroupUrlApi extends BaseApi {
 
     @Autowired
     private GroupUrlService groupUrlService;
 
+    @Autowired
+    private SysManageUserService userService;
 
     @ApiOperation(value = "分页获取所有的url数据")
     @GetMapping(value = "list")
@@ -61,6 +65,15 @@ public class GroupUrlApi {
     @PostMapping(value = "add")
     @RequiresAuthentication
     public ResultJson<String> add(GroupUrlDTO groupUrlDTO) {
+        int usrId = getCurrentManageUserId();
+        if (usrId == -1) {
+            return ResultJson.createByNoAuth();
+        }
+        SysManageUser user = userService.getSysMangeUserMessageById(usrId);
+        if (user == null) {
+            return ResultJson.createByErrorMsg(MessageKey.USER_NOT_EXISTS_ERROR);
+        }
+        groupUrlDTO.setSysUserId("" + usrId);
         if (groupUrlService.addGroupUrl(groupUrlDTO)) {
             return ResultJson.createBySuccess();
         }

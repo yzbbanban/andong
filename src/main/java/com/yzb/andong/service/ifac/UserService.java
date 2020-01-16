@@ -21,6 +21,14 @@ public interface UserService {
     boolean saveUser(UserAddDTO dto);
 
     /**
+     * 获取用户
+     *
+     * @param id id
+     * @return user
+     */
+    UserVO getUserInfo(Integer id);
+
+    /**
      * 更新用户
      *
      * @param dto 用户信息
