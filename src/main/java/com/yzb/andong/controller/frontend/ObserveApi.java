@@ -34,9 +34,9 @@ public class ObserveApi extends BaseApi {
 
     @ApiOperation(value = "获取展屏地址url")
     @GetMapping(value = "url3")
-    @RequiresAuthentication
+//    @RequiresAuthentication
     public ResultJson<List<GroupUrl>> getUrl3() {
-        Integer sysUserId = getCurrentManageUserId();
+        Integer sysUserId = 4;
 
         List<GroupUrl> groupUrls = groupUrlService.getGroupUrlInfo(sysUserId);
 
@@ -45,9 +45,9 @@ public class ObserveApi extends BaseApi {
 
     @ApiOperation(value = "获取展屏地址url2")
     @GetMapping(value = "dUrl")
-    @RequiresAuthentication
+//    @RequiresAuthentication
     public ResultJson<List<List<String>>> getDUrl() {
-        Integer sysUserId = getCurrentManageUserId();
+        Integer sysUserId = 4;
 
         List<GroupUrl> groupUrls = groupUrlService.getGroupUrlInfo(sysUserId);
         List<List<String>> resultList = new ArrayList<>();
